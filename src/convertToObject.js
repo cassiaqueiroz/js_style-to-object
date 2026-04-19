@@ -6,12 +6,10 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const stylesObject = {};
-
-  sourceString
+  return sourceString
     .split(';')
     .map((item) => item.trim())
-    .filter((item) => item.length) // remove entradas vazias
+    .filter((item) => item.length)
     .reduce((acc, item) => {
       const parts = item.split(':');
       const key = parts[0] ? parts[0].trim() : '';
@@ -22,9 +20,7 @@ function convertToObject(sourceString) {
       }
 
       return acc;
-    }, stylesObject);
-
-  return stylesObject;
+    }, {});
 }
 
 module.exports = convertToObject;
